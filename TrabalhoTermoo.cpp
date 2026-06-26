@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 #include <cstring>
 
 using namespace std;
@@ -30,17 +29,24 @@ bool Existe_Caractere(char pTentativa[], char pReal[], int caractereAtual)
 
 void Dica(char pTentativa[], char pReal[], int caractere)
 {
+    const char verde[20] = "\x1B[38;5;46m";
+    const char amarelo[20] = "\x1B[38;5;190m";
+    const char cinza[20] = "\x1B[38;5;8m";
+
+
     if(Verifica_Caractere(pTentativa, pReal, caractere))
     {
-        cout << "[V]  ";
+        
+        cout << verde << "[V]  ";
+        
     }
     else if(Existe_Caractere(pTentativa, pReal, caractere))
     {
-        cout << "[A]  ";
+        cout << amarelo << "[A]  ";
     }
     else
     {
-        cout << "[C]  ";
+        cout << cinza << "[C]  ";
     }
 }
 int main() 
@@ -55,7 +61,7 @@ int main()
     cin >> nRodadas;
     cin.ignore(); // Limpa o buffer de entrada para evitar problemas com getline
 
-    cout << "Digite a palavra de 5 letras: ";// Lê a palavra digitada pelo usuário e armazena o número de rodadas
+    cout << "Digite a palavra de 5 letras: "; // Lê a palavra digitada pelo usuário e armazena o número de rodadas
 
     for (int i = 0; i < nRodadas; i++)
     {
