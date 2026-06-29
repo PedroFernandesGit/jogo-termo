@@ -27,31 +27,53 @@ bool Existe_Caractere(char pTentativa[], char pReal[], int caractereAtual)
     return false;
 }
 
+void Imprime_Maiuscula(char pTentativa[], int caractere)
+{
+
+    
+    if(pTentativa[caractere] >= 'a' && pTentativa[caractere] <= 'z')
+    {
+        cout << (char)(pTentativa[caractere] - 32);
+    }
+    else
+    {
+        cout << pTentativa[caractere];
+    }
+    
+}
+
 void Dica(char pTentativa[], char pReal[], int caractere)
 {
     const char verde[20] = "\x1B[38;5;46m";
     const char amarelo[20] = "\x1B[38;5;190m";
     const char cinza[20] = "\x1B[38;5;8m";
+    const char reset[20] = "\x1B[0m";
 
 
     if(Verifica_Caractere(pTentativa, pReal, caractere))
     {
         
-        cout << verde << "[V]  ";
+        cout << verde << "[";
+        Imprime_Maiuscula(pTentativa, caractere);
+        cout << "]" << "  " << reset;
         
     }
     else if(Existe_Caractere(pTentativa, pReal, caractere))
     {
-        cout << amarelo << "[A]  ";
+        cout << amarelo << "[";
+        Imprime_Maiuscula(pTentativa, caractere);
+        cout << "]" << "  " << reset;
     }
     else
     {
-        cout << cinza << "[C]  ";
+        cout << cinza << "[";
+        Imprime_Maiuscula(pTentativa, caractere);
+        cout << "]" << "  " << reset;
     }
 }
 int main() 
 {    
-    char pReal[6] = "Casas";
+    char pReal[6] = "Funde";
     char pTentativa[6];
     int nRodadas;
     
